@@ -13,8 +13,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace ApiSkeleton3.Controllers;
-[ApiVersion("1.0")] //obtener la relacion entre Usuario y rol
-[ApiVersion("1.1")] //obtener paginacion, registros y buscador de usuariosRoles
+[ApiVersion("1.0")] 
+[ApiVersion("1.1")] 
 public class UsuarioRolController : BaseApiController
 {
     private readonly IUnitOfWork _unitOfWork;
@@ -43,7 +43,6 @@ public class UsuarioRolController : BaseApiController
         return new Pager<UsuarioRolDto>(lstUsuRolDto, usuariosRoles.totalRegistros, usuarioParams.PageIndex, usuarioParams.PageSize, usuarioParams.Search);
     }
 
-    //METODO GET POR ID (Traer un solo registro de la entidad de la  Db)
     [HttpGet("{idUsuario}/{idRol}")]
     //[Authorize]
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -61,7 +60,6 @@ public class UsuarioRolController : BaseApiController
         return _mapper.Map<UsuarioRolDto>(usuarioRol);
     }
 
-    //METODO POST (para enviar registros a la entidad de la Db)
     [HttpPost]
     //[Authorize(Roles = "Administrador")]
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -81,7 +79,6 @@ public class UsuarioRolController : BaseApiController
         return _mapper.Map<UsuarioRolDto>(usuarioRol);
     }
 
-    //METODO PUT (editar un registro de la entidad de la Db)
     [HttpPut("{idUsuario}/{idRol}")]
     //[Authorize(Roles = "Administrador")]
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -103,7 +100,6 @@ public class UsuarioRolController : BaseApiController
         return _mapper.Map<UsuarioRolDto>(usuarioRol);        
     }
 
-    //METODO DELETE (Eliminar un registro de la entidad de la Db)
     [HttpDelete("{idUsuario}/{idRol}")]
     //[Authorize(Roles = "Administrador")]
     [ProducesResponseType(StatusCodes.Status200OK)]
